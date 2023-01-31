@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="da">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/e4a889809e.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="styles.css" />
+    <title>WeekDish - Mad til hele ugen</title>
+  </head>
+  <body>
+    <header>
+      <h1>WeekDish</h1>
+      <h2>mad til hele ugen</h2>
+      <!-- <i class="fa-solid fa-utensils"></i> -->
+      <img src="images/plate.svg" alt="white circle" id="whiteCircle" />
+    </header>
+    <main>
+      <div id="main-container">
+        <div>
+          <h3>Ugeplan</h3>
+          <div class="white-box">
+            <h4>Mandag</h4>
+            <p></p>
+            <h4>Tirsdag</h4>
+            <p></p>
+            <h4>Onsdag</h4>
+            <p></p>
+            <h4>Torsdag</h4>
+            <p></p>
+            <h4>Fredag</h4>
+            <p></p>
+          </div>
+        </div>
+        <div id="button-container">
+          <h4>Generer ugeplan</h4>
+          <h4>Generer indkøbsseddel</h4>
+          <h5>Samlet pris:</h5>
+          <p>Hent indkøbsseddel <i class="fa-solid fa-download"></i></p>
+        </div>
+        <div>
+          <h3>Indkøbsseddel</h3>
+          <div class="white-box">
+            <ul></ul>
+          </div>
+        </div>
+      </div>
+      <button id="generateBtn">Generer retter</button>
+      <button id="ingredientBtn">Udtræk ingredienser</button>
+      <div id="dishField"></div>
+      <div id="ingredientsField"></div>
+    </main>
+  </body>
+</html>

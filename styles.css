@@ -1,0 +1,54 @@
+/* FONTS IMPORT */
+@import url("https://use.typekit.net/tct3maa.css");
+
+/* Removing padding an margin for whole page */
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+/* General rules */
+
+body {
+  background-color: #e3e6d1;
+  font-family: forma-djr-banner, sans-serif;
+}
+
+/* Plate and logo */
+
+header {
+  text-align: center;
+  position: relative;
+}
+
+header h1 {
+  font-family: bely-display, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 55pt;
+  padding-top: 10px;
+  text-shadow: 0px 2px 4px #00000096;
+}
+header h2 {
+  font-weight: 200;
+  letter-spacing: 2px;
+  font-size: 22pt;
+}
+
+#whiteCircle {
+  z-index: -1;
+  width: 450px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -70%);
+}
+
+.fa-utensils {
+  font-size: 30pt;
+  color: #546673;
+  padding-top: 30px;
+}
+
+/* Main content */
