@@ -21,7 +21,7 @@
     </header>
     <main>
       <div id="main-container">
-        <div>
+        <div id="infoContainer-left">
           <h3>Ugeplan</h3>
           <div class="white-box">
             <h4>Mandag</h4>
@@ -37,22 +37,19 @@
           </div>
         </div>
         <div id="button-container">
-          <h4>Generer ugeplan</h4>
-          <h4>Generer indkøbsseddel</h4>
+          <h4 id="generateBtn">Opret ugeplan</h4>
+          <h4 id="ingredientBtn">Opret indkøbsseddel</h4>
           <h5>Samlet pris:</h5>
           <p>Hent indkøbsseddel <i class="fa-solid fa-download"></i></p>
         </div>
-        <div>
+        <div id="infoContainer-right">
           <h3>Indkøbsseddel</h3>
           <div class="white-box">
             <ul></ul>
           </div>
         </div>
       </div>
-      <button id="generateBtn">Generer retter</button>
-      <button id="ingredientBtn">Udtræk ingredienser</button>
-      <div id="dishField"></div>
-      <div id="ingredientsField"></div>
     </main>
+    <div id="dishField"></div>
   </body>
 </html>

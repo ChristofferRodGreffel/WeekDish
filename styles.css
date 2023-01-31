@@ -52,3 +52,98 @@ header h2 {
 }
 
 /* Main content */
+
+/* Container flexing out entire main content section */
+
+#main-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+/* Titles for white boxes */
+
+#infoContainer-left h3,
+#infoContainer-right h3 {
+  text-align: center;
+  padding-bottom: 15px;
+  font-family: bely, sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18pt;
+  letter-spacing: 1px;
+}
+
+/* White boxes on both sides */
+
+.white-box {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  height: 430px;
+  width: 250px;
+  background-color: white;
+  border-radius: 20px;
+}
+
+.white-box h4 {
+  padding-left: 20px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-decoration: underline;
+}
+
+/* Middel button container */
+
+#button-container {
+  margin-top: 150px;
+  text-align: center;
+}
+
+#button-container h4 {
+  font-weight: 100;
+  font-size: 13pt;
+  color: white;
+  letter-spacing: 1.5px;
+  padding: 10px 40px;
+  border-radius: 40px;
+  background-color: #afac50;
+  margin-bottom: 30px;
+}
+#button-container h4:nth-child(2) {
+  background-color: #546673;
+}
+#button-container h4:hover,
+#button-container h4:nth-child(2):hover {
+  background-color: black;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+#button-container h5 {
+  margin-top: 70px;
+}
+
+#button-container p {
+  margin: auto;
+  margin-top: 100px;
+  padding: 5px 10px;
+  border-radius: 20px;
+  width: fit-content;
+  background-color: black;
+  color: white;
+  font-size: 9pt;
+  word-spacing: 0px;
+  letter-spacing: 1px;
+}
+#button-container p:hover {
+  transform: scale(1.05);
+  transition: 0.2s;
+  cursor: pointer;
+}
+.fa-download {
+  padding-left: 5px;
+}
+
+#dishField {
+  font-family: Arial, Helvetica, sans-serif;
+}

@@ -72,8 +72,16 @@ genBtn.addEventListener("click", () => {
     let popNum = numArray.pop();
     var dishSelect = dishes[popNum];
     dishNames.push(dishSelect.name);
+    console.log(dishNames);
   }
-  dishField.innerHTML = `<b>Denne uges retter er:</b> ${dishNames}`;
+  let weekplan = `<div>${dishNames
+    .map((Børge) => {
+      return `<p>${Børge}</p>`;
+    })
+    .join("")}</div>`;
+
+  dishField.innerHTML = weekplan;
+  // dishField.innerHTML = `<b>Denne uges retter er:</b> ${dishNames}`;
 });
 
 // THIS FUNCTIONS GETS THE RANDOM NUMBERS FROM A NEW ARRAY AND USES THOSE TO GET THE INGREDIENTS INTO ANOTHER NEW ARRAY
