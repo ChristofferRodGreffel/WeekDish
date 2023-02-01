@@ -14,7 +14,7 @@ body {
   background-color: #e3e6d1;
   font-family: forma-djr-banner, sans-serif;
   animation: shake 50ms ease-in-out;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 /* Plate and logo */
@@ -57,6 +57,7 @@ header h2 {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -70%);
+  filter: drop-shadow(0px 0px 10px #0000004c);
 }
 
 .fa-utensils {
@@ -135,11 +136,21 @@ header h2 {
   text-decoration: underline;
 }
 
-/* Middel button container */
+/* Middle button container */
 
 #button-container {
   margin-top: 150px;
   text-align: center;
+  animation: slide-in-bottom 1.4s ease-in-out;
+}
+
+@keyframes slide-in-bottom {
+  0% {
+    transform: translateY(500px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
 }
 
 #button-container h4 {
@@ -151,9 +162,12 @@ header h2 {
   border-radius: 40px;
   background-color: #afac50;
   margin-bottom: 30px;
+  user-select: none;
+  animation: slide-in-bottom 1.2s ease-in-out;
 }
 #button-container h4:nth-child(2) {
   background-color: #546673;
+  animation: slide-in-bottom 1.3s ease-in-out;
 }
 #button-container h4:hover,
 #button-container h4:nth-child(2):hover {
@@ -164,6 +178,7 @@ header h2 {
 
 #button-container h5 {
   margin-top: 70px;
+  animation: slide-in-bottom 1.4s ease-in-out;
 }
 
 #button-container p {
@@ -177,12 +192,14 @@ header h2 {
   font-size: 9pt;
   word-spacing: 0px;
   letter-spacing: 1px;
+  animation: slide-in-bottom 1.5s ease-in-out;
 }
 #button-container p:hover {
   transform: scale(1.05);
   transition: 0.2s;
   cursor: pointer;
 }
+
 .fa-download {
   padding-left: 5px;
 }
@@ -204,6 +221,10 @@ header h2 {
   font-size: 12pt;
   font-weight: 500;
 }
+#dishField li {
+  font-family: indie-flower, sans-serif;
+  font-weight: 800;
+}
 
 #dishIngredients {
   overflow-y: scroll;
@@ -224,5 +245,5 @@ header h2 {
   text-align: left;
   flex-direction: column;
   font-family: indie-flower, sans-serif;
-  padding: 5px;
+  text-align: left;
 }

@@ -40,13 +40,44 @@ const dishFour = new Dish(
 );
 const dishFive = new Dish(
   "Chili Con Carne",
-  ["Bønner", "Flåede tomater", "Ris", "Tomatpure", "Gulerødder", "Løg"],
+  [
+    "Bønner",
+    "Oksekød",
+    "Flåede tomater",
+    "Ris",
+    "Tomatpure",
+    "Gulerødder",
+    "Løg",
+  ],
   100
+);
+const dishSix = new Dish(
+  "Pastasalat m. kylling",
+  ["Kylling", "Pasta", "Salatblanding", "Grøntsager efter behov"],
+  75
+);
+const dishSeven = new Dish(
+  "Burger",
+  ["Oksekød 400g", "Burgerboller", "Iceberg salat", "Grøntsager efter behov"],
+  75
+);
+const dishEight = new Dish(
+  "Chili sin carne",
+  ["Kylling", "Pasta", "Salatblanding", "Grøntsager efter behov"],
+  75
 );
 
 // DISHES ARE PUSHED TO THE ARRAY
 
-dishes.push(dishOne, dishTwo, dishThree, dishFour, dishFive);
+dishes.push(
+  dishOne,
+  dishTwo,
+  dishThree,
+  dishFour,
+  dishFive,
+  dishSix,
+  dishSeven
+);
 
 // THIS FUNCTION DEFINES A RANDOM NUMBER BETWEEN 1 AND THE LENGTH OF THE DISHES ARRAY
 // THE FUNCTION IS WRAPPED IN A LOOP TO MAKE IT RUN 5 TIMES (NO. OF DAYS IN THE WEEK)
@@ -70,11 +101,34 @@ genBtn.addEventListener("click", () => {
   newArray = numArray.slice();
   let dishNames = [];
   let dishPrice = [];
+  let whatDay = 0;
   for (i = 0; i < 5; i++) {
     let popNum = numArray.pop();
     var dishSelect = dishes[popNum];
     dishNames.push(dishSelect.name);
     dishPrice.push(dishSelect.price);
+    whatDay++;
+
+    // switch (true) {
+    //   case whatDay === 1:
+    //     console.log("Mandag!");
+    //     break;
+    //   case whatDay === 2:
+    //     console.log("Tirsdag!");
+    //     break;
+    //   case whatDay === 3:
+    //     console.log("Onsdag!");
+    //     break;
+    //   case whatDay === 4:
+    //     console.log("Torsdag!");
+    //     break;
+    //   case whatDay === 5:
+    //     console.log("Fredag!");
+    //     break;
+    //   default:
+    //     console.log("Intet sket....");
+    //     break;
+    // }
   }
   let weekplan = `<ul>${dishNames
     .map((dish) => {
@@ -106,10 +160,5 @@ ingredientBtn.addEventListener("click", () => {
     .join("")}</ul>`;
 
   ingredientsList.toString();
-
-  console.log(ingredientsList);
   ingredientsField.innerHTML = ingredientsList;
-
-  // ingredientsField.innerHTML = dishIngredients;
-  // console.log("NewArray after function:", newArray);
 });
