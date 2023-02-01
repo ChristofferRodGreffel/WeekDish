@@ -3,7 +3,8 @@
 const genBtn = document.querySelector("#generateBtn");
 const dishField = document.querySelector("#dishField");
 const ingredientBtn = document.querySelector("#ingredientBtn");
-const ingredientsField = document.querySelector("#ingredientsField");
+const ingredientsField = document.querySelector("#dishIngredients");
+const priceField = document.querySelector("#price");
 
 // THIS ARRAY WILL HOLD ALL OF THE DISH OBJECTS
 
@@ -34,7 +35,7 @@ const dishThree = new Dish(
 );
 const dishFour = new Dish(
   "Pizza",
-  ["Pizzadej", "Tomatsauce", "Pepperoni", "Ost", "Efter ønske"],
+  ["Pizzadej", "Tomatsauce", "Pepperoni", "Ost"],
   120
 );
 const dishFive = new Dish(
@@ -68,33 +69,47 @@ genBtn.addEventListener("click", () => {
   randomizeNumbers();
   newArray = numArray.slice();
   let dishNames = [];
+  let dishPrice = [];
   for (i = 0; i < 5; i++) {
     let popNum = numArray.pop();
     var dishSelect = dishes[popNum];
     dishNames.push(dishSelect.name);
-    console.log(dishNames);
+    dishPrice.push(dishSelect.price);
   }
-  let weekplan = `<div>${dishNames
-    .map((Børge) => {
-      return `<p>${Børge}</p>`;
+  let weekplan = `<ul>${dishNames
+    .map((dish) => {
+      return `<li>${dish}</li>`;
     })
-    .join("")}</div>`;
+    .join("")}</ul>`;
 
   dishField.innerHTML = weekplan;
-  // dishField.innerHTML = `<b>Denne uges retter er:</b> ${dishNames}`;
+  priceField.innerHTML = `Samlet pris: ${dishPrice.reduce(
+    (a, b) => a + b,
+    0
+  )} kr.`;
 });
 
 // THIS FUNCTIONS GETS THE RANDOM NUMBERS FROM A NEW ARRAY AND USES THOSE TO GET THE INGREDIENTS INTO ANOTHER NEW ARRAY
 // THEN A TEMPLATE LITERAL CONVEYS THE DATA
 
 ingredientBtn.addEventListener("click", () => {
-  console.log("NewArray before function:", newArray);
   let dishIngredients = [];
   for (i = 0; i < 5; i++) {
     let popNum = newArray.pop();
     var dishSelect = dishes[popNum];
     dishIngredients.push(dishSelect.ingredients);
   }
-  ingredientsField.innerHTML = `<b>Ingredienserne er:</b> ${dishIngredients}`;
-  console.log("NewArray after function:", newArray);
+  let ingredientsList = `<ul>${dishIngredients
+    .map((ingredient) => {
+      return `<li>${ingredient.join("<br>")}</li>`;
+    })
+    .join("")}</ul>`;
+
+  ingredientsList.toString();
+
+  console.log(ingredientsList);
+  ingredientsField.innerHTML = ingredientsList;
+
+  // ingredientsField.innerHTML = dishIngredients;
+  // console.log("NewArray after function:", newArray);
 });

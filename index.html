@@ -10,6 +10,7 @@
     ></script>
     <script src="script.js" defer></script>
     <link rel="stylesheet" href="styles.css" />
+    <link rel="shortcut icon" href="images/favicon.svg" type="image/x-icon" />
     <title>WeekDish - Mad til hele ugen</title>
   </head>
   <body>
@@ -23,28 +24,17 @@
       <div id="main-container">
         <div id="infoContainer-left">
           <h3>Ugeplan</h3>
-          <div class="white-box">
-            <h4>Mandag</h4>
-            <p></p>
-            <h4>Tirsdag</h4>
-            <p></p>
-            <h4>Onsdag</h4>
-            <p></p>
-            <h4>Torsdag</h4>
-            <p></p>
-            <h4>Fredag</h4>
-            <p></p>
-          </div>
+          <div class="white-box" id="dishField"></div>
         </div>
         <div id="button-container">
           <h4 id="generateBtn">Opret ugeplan</h4>
           <h4 id="ingredientBtn">Opret indkøbsseddel</h4>
-          <h5>Samlet pris:</h5>
+          <h5 id="price">Samlet pris:</h5>
           <p>Hent indkøbsseddel <i class="fa-solid fa-download"></i></p>
         </div>
         <div id="infoContainer-right">
           <h3>Indkøbsseddel</h3>
-          <div class="white-box">
+          <div class="white-box" id="dishIngredients">
             <ul></ul>
           </div>
         </div>
