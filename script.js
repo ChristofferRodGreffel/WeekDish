@@ -3,7 +3,7 @@
 const genBtn = document.querySelector("#generateBtn");
 const dishField = document.querySelector("#dishField");
 const ingredientBtn = document.querySelector("#ingredientBtn");
-const ingredientsField = document.querySelector("#dishIngredients");
+const ingredientsField = document.querySelector("#dishIngredients ul");
 const priceField = document.querySelector("#price");
 const downloadBtn = document.querySelector("#downloadBtn");
 
@@ -297,9 +297,11 @@ ingredientBtn.addEventListener("click", () => {
 
   const combinedArray = [];
 
-  for (poop of dishIngredients) {
-    combinedArray.push(...poop);
+  for (let items of dishIngredients) {
+    combinedArray.push(...items);
   }
+
+  ingredientsDown = combinedArray;
 
   const listItems = combinedArray
     .map(
@@ -317,14 +319,17 @@ ingredientBtn.addEventListener("click", () => {
   // ];
 
   ingredientsField.innerHTML = listItems;
-  ingredientsDown = dishIngredients;
 });
 
 // DOWNLOAD BUTTON
 
-downloadBtn.addEventListener("click", () => {
-  ingredientsDown.join("<br>");
-  const downloadBtn = document.querySelector("#downloadBtn");
-  const blob = new Blob([ingredientsDown], { type: "text" });
-  downloadBtn.href = URL.createObjectURL(blob);
+downloadBtn.addEventListener("click", (e) => {
+  if (ingredientsDown.length === 0) {
+    alert("Du har ikke oprettet en indkøbsseddel");
+    e.preventDefault();
+  } else {
+    const blob = new Blob([ingredientsDown.join("\n")], { type: "text/plain" });
+    downloadBtn.href = URL.createObjectURL(blob);
+    downloadBtn.download = "ingredienser.txt";
+  }
 });
