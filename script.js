@@ -6,6 +6,8 @@ const ingredientBtn = document.querySelector("#ingredientBtn");
 const ingredientsField = document.querySelector("#dishIngredients ul");
 const priceField = document.querySelector("#price");
 const downloadBtn = document.querySelector("#downloadBtn");
+const ingredientRemoveBtn = document.querySelector("#removeIngredientsBtn");
+const ingredientResetBtn = document.querySelector("#resetIngredientsBtn");
 
 // THIS ARRAY WILL HOLD ALL OF THE DISH OBJECTS
 
@@ -224,13 +226,14 @@ let dish40 = new Dish(
 // THIS FUNCTION DEFINES A RANDOM NUMBER BETWEEN 1 AND THE LENGTH OF THE DISHES ARRAY
 // THE FUNCTION IS WRAPPED IN A LOOP TO MAKE IT RUN 5 TIMES (NO. OF DAYS IN THE WEEK)
 
-const numArray = [];
-let newArray = [];
+let numArray = [];
 
 function randomizeNumbers() {
-  for (i = 0; i < 5; i++) {
+  while (numArray.length < 5) {
     let randint = Math.floor(Math.random() * dishes.length);
-    numArray.push(randint);
+    if (!numArray.includes(randint)) {
+      numArray.push(randint);
+    }
   }
 }
 
@@ -239,16 +242,18 @@ function randomizeNumbers() {
 // A TEMPLATE LITERAL CONVEYS THE DATA TO THE USER
 
 genBtn.addEventListener("click", () => {
+  numArray = [];
   randomizeNumbers();
-  newArray = numArray.slice();
   let dishNames = [];
   let dishPrice = [];
-  for (i = 0; i < 5; i++) {
-    let popNum = numArray.pop();
-    var dishSelect = dishes[popNum];
+
+  numArray.forEach((popNumber) => {
+    console.log(popNumber);
+    var dishSelect = dishes[popNumber];
     dishNames.push(dishSelect.name);
     dishPrice.push(dishSelect.price);
-  }
+  });
+
   let weekplan = `<ul>${dishNames
     .map((dish, key) => {
       let weekDay = "";
@@ -285,12 +290,22 @@ genBtn.addEventListener("click", () => {
 // THIS FUNCTIONS GETS THE RANDOM NUMBERS FROM A NEW ARRAY AND USES THOSE TO GET THE INGREDIENTS INTO ANOTHER NEW ARRAY
 // THEN A TEMPLATE LITERAL CONVEYS THE DATA
 
+let ingredientsArray = [];
 let ingredientsDown = [];
+
+function arrayMap(arr) {
+  return arr
+    .map(
+      (item) =>
+        `<div id="itemList"><li>${item}</li><input type="checkbox" class="checkItems" value="${item}"></input></div>`
+    )
+    .join("");
+}
 
 ingredientBtn.addEventListener("click", () => {
   let dishIngredients = [];
   for (i = 0; i < 5; i++) {
-    let popNum = newArray.pop();
+    let popNum = numArray.pop();
     var dishSelect = dishes[popNum];
     dishIngredients.push(dishSelect.ingredients);
   }
@@ -303,23 +318,28 @@ ingredientBtn.addEventListener("click", () => {
 
   ingredientsDown = combinedArray;
 
-  const listItems = combinedArray
-    .map(
-      (item) =>
-        `<div id="itemList"><li>${item}</li><input type="checkbox" class="checkItems"></input></div>`
-    )
-    .join("");
-
-  // let ingredientsList = [
-  //   `<ul>${dishIngredients
-  //     .map((ingredient) => {
-  //       return `<li>${ingredient.join("<br>")}</li>`;
-  //     })
-  //     .join("")}</ul>`,
-  // ];
-
-  ingredientsField.innerHTML = listItems;
+  ingredientsField.innerHTML = arrayMap(combinedArray);
+  document.getElementById("removeIngredientsBtn").style.display = "block";
 });
+
+// INGREDIENTS REMOVE BUTTON EVENT
+
+ingredientRemoveBtn.addEventListener("click", () => {
+  let checkboxes = document.querySelectorAll(".checkItems");
+  let chosenIngredients = [];
+  checkboxes.forEach((checkbox) => {
+    if (checkbox.checked) {
+      chosenIngredients.push(checkbox.value);
+      let finalIngredients = ingredientsDown.filter((element) => {
+        return !chosenIngredients.includes(element);
+      });
+      ingredientsField.innerHTML = arrayMap(finalIngredients);
+      ingredientsDown = finalIngredients;
+    }
+  });
+});
+
+// RESET INGREDIENTSLIST
 
 // DOWNLOAD BUTTON
 
